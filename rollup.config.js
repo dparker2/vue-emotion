@@ -12,4 +12,10 @@ export default [{
     file: 'plugin/index.js',
     format: 'cjs'
   }
+}, {
+  input: 'lib/index.js',
+  output: {
+    file: 'index.js',
+    format: 'cjs'
+  }
 }];

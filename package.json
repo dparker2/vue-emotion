@@ -2,6 +2,7 @@
   "name": "vue-emotion-block",
   "version": "0.0.2",
   "description": "Use emotion in Vue.js SFC",
+  "main": "index.js",
   "scripts": {
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
