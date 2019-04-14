@@ -1,0 +1,32 @@
+{
+  "name": "vue-emotion-block",
+  "version": "0.0.2",
+  "description": "Use emotion in Vue.js SFC",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParkerD559/vue-emotion-block.git"
+  },
+  "keywords": [
+    "vue",
+    "sfc",
+    "emotion",
+    "javascript"
+  ],
+  "author": "David Parker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ParkerD559/vue-emotion-block/issues"
+  },
+  "homepage": "https://github.com/ParkerD559/vue-emotion-block#readme",
+  "devDependencies": {
+    "rollup": "^1.10.0"
+  },
+  "dependencies": {
+    "character-parser": "^3.1.0",
+    "emotion": "^10.0.9"
+  }
+}
