@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "vue": "^2.5.22",
-    "vue-emotion-block": "0.0.2"
+    "vue-emotion-block": "latest"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
