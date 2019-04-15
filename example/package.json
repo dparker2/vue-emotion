@@ -1,5 +1,5 @@
 {
-  "name": "vue-emotion-block-example",
+  "name": "vue-emotion-plugin-example",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "vue": "^2.5.22",
-    "vue-emotion-block": "latest"
+    "vue-emotion-plugin": "latest"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",

@@ -3,7 +3,7 @@
     Adjust the style properties to the left.<br />
     - The changes are reactive via Vue.js<br />
     - Emotion powers the js to css transformation.<br />
-    - vue-emotion-block ties them together.<br />
+    - vue-emotion-plugin ties them together.<br />
   </div>
 </template>
 

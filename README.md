@@ -1,12 +1,12 @@
-# vue-emotion-block
+# vue-emotion-plugin
 Use dynamic styling powered by [emotion](https://emotion.sh/docs/emotion) in idiomatic Vue via a custom SFC block.
 
 ## Demo Link
-https://codesandbox.io/s/github/ParkerD559/vue-emotion-block/tree/master/example
+https://codesandbox.io/s/github/ParkerD559/vue-emotion-plugin/tree/master/example
 
 ## Installation
 ```
-npm install -D vue-emotion-block
+npm install -D vue-emotion-plugin
 ```
 
 Add webpack loader rule
@@ -18,7 +18,7 @@ module.exports = {
             rules: [
                 {
                     resourceQuery: /blockType=emotion/,
-                    loader: require.resolve('vue-emotion-block/loader')
+                    loader: require.resolve('vue-emotion-plugin/loader')
                 }
             ]
         }
@@ -29,7 +29,7 @@ module.exports = {
 Add plugin
 ```javascript
 import Vue from 'vue';
-import VueEmotionPlugin from 'vue-emotion-block/plugin';
+import VueEmotionPlugin from 'vue-emotion-plugin/plugin';
 
 Vue.use(VueEmotionPlugin);
 ```

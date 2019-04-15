@@ -4,7 +4,7 @@ module.exports = {
             rules: [
                 {
                     resourceQuery: /blockType=emotion/,
-                    loader: require.resolve('vue-emotion-block/loader')
+                    loader: require.resolve('vue-emotion-plugin/loader')
                 }
             ]
         }
