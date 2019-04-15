@@ -1,21 +1,23 @@
 <template>
   <div id="app">
-    <label for="height-input">
-      Height:
-    </label>
-    <input id="height-input" v-model="heightInput" />
-    <label for="width-input">
-      Width:
-    </label>
-    <input id="width-input" v-model="widthInput" />
-    <label for="color-input">
-      Text Color:
-    </label>
-    <input id="color-input" v-model="colorInput" />
-    <label for="background-color-input">
-      Background Color:
-    </label>
-    <input id="background-color-input" v-model="backgroundColorInput" />
+    <div>
+      <label for="height-input">
+        Height:
+      </label>
+      <input id="height-input" v-model="heightInput" />
+      <label for="width-input">
+        Width:
+      </label>
+      <input id="width-input" v-model="widthInput" />
+      <label for="color-input">
+        Text Color:
+      </label>
+      <input id="color-input" v-model="colorInput" />
+      <label for="background-color-input">
+        Background Color:
+      </label>
+      <input id="background-color-input" v-model="backgroundColorInput" />
+    </div>
     <div class="box-wrapper">
       <demo-box 
         class="demo-box"
@@ -53,6 +55,7 @@ export default {
 
 <style>
 #app {
+  display: flex;
   height: 100vh;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
 }
@@ -66,6 +69,6 @@ input {
 }
 
 .box-wrapper {
-  margin-top: 20px;
+  margin-left: 20px;
 }
 </style>
