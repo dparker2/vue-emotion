@@ -1,28 +1,71 @@
 <template>
   <div id="app">
-    <img width="25%" src="./assets/logo.png">
-    <HelloWorld/>
+    <label for="height-input">
+      Height:
+    </label>
+    <input id="height-input" v-model="heightInput" />
+    <label for="width-input">
+      Width:
+    </label>
+    <input id="width-input" v-model="widthInput" />
+    <label for="color-input">
+      Text Color:
+    </label>
+    <input id="color-input" v-model="colorInput" />
+    <label for="background-color-input">
+      Background Color:
+    </label>
+    <input id="background-color-input" v-model="backgroundColorInput" />
+    <div class="box-wrapper">
+      <demo-box 
+        class="demo-box"
+        :color="colorInput"
+        :backgroundColor="backgroundColorInput"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
-
+import DemoBox from "./DemoBox.vue";
 export default {
   name: "App",
   components: {
-    HelloWorld
+    DemoBox
+  },
+  data() {
+    return {
+      heightInput: 350,
+      widthInput: 350,
+      colorInput: '',
+      backgroundColorInput: ''
+    }
   }
 };
 </script>
 
 <emotion>
-&#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.demo-box {
+  height: ${this.heightInput}px;
+  width: ${this.widthInput}px;
 }
 </emotion>
+
+<style>
+#app {
+  height: 100vh;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+}
+
+label, input {
+  display: block;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+.box-wrapper {
+  margin-top: 20px;
+}
+</style>
