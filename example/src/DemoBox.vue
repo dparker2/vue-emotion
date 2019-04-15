@@ -1,6 +1,6 @@
 <template>
   <div>
-    Adjust the style properties above.<br />
+    Adjust the style properties to the left.<br />
     - The changes are reactive via Vue.js<br />
     - Emotion powers the js to css transformation.<br />
     - vue-emotion-block ties them together.<br />
