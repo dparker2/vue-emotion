@@ -1,0 +1,28 @@
+{
+  "name": "@vue-emotion/styled",
+  "version": "0.0.1",
+  "description": "Integration between vue.js and emotion",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParkerD559/vue-emotion.git"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "vuejs2",
+    "emotion",
+    "emotionjs",
+    "emotion-js",
+    "css-in-js"
+  ],
+  "author": "David Parker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ParkerD559/vue-emotion/issues"
+  },
+  "homepage": "https://github.com/ParkerD559/vue-emotion#readme",
+  "dependencies": {
+    "emotion": "^10.0.9"
+  }
+}

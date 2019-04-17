@@ -1,48 +1,25 @@
-# vue-emotion-plugin
-Use dynamic styling powered by [emotion](https://emotion.sh/docs/emotion) in idiomatic Vue via a custom SFC block.
+# vue-emotion
+Use dynamic styling powered by [emotion](https://emotion.sh/docs/emotion) with Vue.js components.
 
 ## Demo Link
-https://codesandbox.io/s/github/ParkerD559/vue-emotion-plugin/tree/master/example
+https://codesandbox.io/s/github/ParkerD559/vue-emotion-plugin/tree/master
 
+# Styled
 ## Installation
 ```
-npm install -D vue-emotion-plugin
-```
-
-Add webpack loader rule
-```javascript
-// vue.config.js
-module.exports = {
-    configureWebpack: {
-        module: {
-            rules: [
-                {
-                    resourceQuery: /blockType=emotion/,
-                    loader: require.resolve('vue-emotion-plugin/loader')
-                }
-            ]
-        }
-    }
-}
-```
-
-Add plugin
-```javascript
-import Vue from 'vue';
-import VueEmotionPlugin from 'vue-emotion-plugin/plugin';
-
-Vue.use(VueEmotionPlugin);
+npm install -D @vue-emotion/styled
 ```
 
 ## Usage
-The `emotion` blocks are templates evaluated in the component's context, so this is possible:
+```javascript
+const StyledButton = styled(MyButton)`
+  border: 1px solid ${color('red')};
+  padding: 10px;
+  height: ${props => props.height}px;
+  width: ${props => props.width}px;
+  color: ${props => props.color};
+  background-color: ${props => props.backgroundColor};
+`
 ```
-<emotion>
-& {
-    color: ${this.color};
-}
-</emotion>
-```
-If `this.color` ever changes, the style will be dynamically updated. The [usual limits](https://vuejs.org/v2/guide/reactivity.html) of reactivity in Vue.js apply.
 
-Note: see https://stylis.js.org/ for the css syntax that emotion understands.
+Aims to function similar to `styled` from `react-emotion`.

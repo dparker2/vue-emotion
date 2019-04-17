@@ -1,8 +1,5 @@
 import Vue from "vue";
-import VueEmotion from "vue-emotion-plugin/plugin"
 import App from "./App.vue";
-
-Vue.use(VueEmotion);
 
 Vue.config.productionTip = false;
 

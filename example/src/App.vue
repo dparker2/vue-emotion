@@ -19,8 +19,9 @@
       <input id="background-color-input" v-model="backgroundColorInput" />
     </div>
     <div class="box-wrapper">
-      <demo-box 
-        class="demo-box"
+      <styled-demo-box
+        :height="heightInput"
+        :width="widthInput"
         :color="colorInput"
         :backgroundColor="backgroundColorInput"
       />
@@ -30,28 +31,32 @@
 
 <script>
 import DemoBox from "./DemoBox.vue";
+import styled from '../../lib/styled';
+
+const StyledDemoBox = styled(DemoBox)`
+  border: 1px solid #000;
+  padding: 10px;
+  height: ${props => props.height}px;
+  width: ${props => props.width}px;
+  color: ${props => props.color};
+  background-color: ${props => props.backgroundColor};
+`
+
 export default {
   name: "App",
   components: {
-    DemoBox
+    StyledDemoBox
   },
   data() {
     return {
       heightInput: 350,
-      widthInput: 350,
-      colorInput: '',
-      backgroundColorInput: ''
+      widthInput: 450,
+      colorInput: 'maroon',
+      backgroundColorInput: 'turquoise'
     }
   }
 };
 </script>
-
-<emotion>
-.demo-box {
-  height: ${this.heightInput}px;
-  width: ${this.widthInput}px;
-}
-</emotion>
 
 <style>
 #app {
