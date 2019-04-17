@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "example:serve": "vue-cli-service serve example/src/main.js",
+    "serve": "vue-cli-service serve example/src/main.js",
     "build": "rollup -c"
   },
   "dependencies": {
