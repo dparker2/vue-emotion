@@ -16,6 +16,5 @@ fi
 
 cd ./dist/$2
 VERSION=$(npm version $1)
-cd ../..
-
+npm publish
 git commit -am "publish $2 $VERSION"
