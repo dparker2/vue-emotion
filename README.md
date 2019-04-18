@@ -10,7 +10,7 @@ https://codesandbox.io/s/github/ParkerD559/vue-emotion-plugin/tree/master
 npm install -D @vue-emotion/styled
 ```
 
-## Usage
+## Style Components
 ```javascript
 const StyledButton = styled(MyButton)`
   border: 1px solid ${color('red')};
@@ -22,7 +22,12 @@ const StyledButton = styled(MyButton)`
 `
 ```
 
-Should function the same as `styled` from `react-emotion`.
+## Style HTML elements
+```javascript
+const StyledAnchor = styled.a`
+  text-decoration: none;
+`
+```
 
 # Bugs/Features
 
