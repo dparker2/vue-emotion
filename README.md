@@ -22,4 +22,8 @@ const StyledButton = styled(MyButton)`
 `
 ```
 
-Aims to function similar to `styled` from `react-emotion`.
+Should function the same as `styled` from `react-emotion`.
+
+# Bugs/Features
+
+Please feel free to post any issues or feature requests: https://github.com/ParkerD559/vue-emotion/issues
