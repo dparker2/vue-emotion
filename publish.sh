@@ -14,6 +14,7 @@ elif [[ ! -f ./dist/$2/package.json ]]; then
   exit
 fi
 
+npm run build
 cd ./dist/$2
 VERSION=$(npm version $1)
 npm publish
