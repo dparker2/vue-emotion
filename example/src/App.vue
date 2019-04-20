@@ -31,9 +31,9 @@
 
 <script>
 import DemoBox from "./DemoBox.vue";
-import styled from '@vue-emotion/styled';
+import styled from '../../lib/styled';
 
-const StyledDemoBox = styled(base)`
+const StyledDemoBox = styled(DemoBox)`
   border: 1px solid #000;
   padding: 10px;
   height: ${props => props.height}px;
@@ -45,8 +45,7 @@ const StyledDemoBox = styled(base)`
 export default {
   name: "App",
   components: {
-    StyledDemoBox,
-    NewDemoBox
+    StyledDemoBox
   },
   data() {
     return {
