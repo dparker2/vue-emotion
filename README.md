@@ -1,6 +1,8 @@
 # vue-emotion
 
 [![npm version](https://badge.fury.io/js/%40vue-emotion%2Fstyled.svg)](https://badge.fury.io/js/%40vue-emotion%2Fstyled)
+[![Build Status](https://travis-ci.org/ParkerD559/vue-emotion.svg?branch=master)](https://travis-ci.org/ParkerD559/vue-emotion)
+[![Coverage Status](https://coveralls.io/repos/github/ParkerD559/vue-emotion/badge.svg?branch=master)](https://coveralls.io/github/ParkerD559/vue-emotion?branch=master)
 
 Use dynamic styling powered by [emotion](https://emotion.sh/docs/emotion) with Vue.js components.
 
