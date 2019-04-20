@@ -1,4 +1,7 @@
 # vue-emotion
+
+[![npm version](https://badge.fury.io/js/%40vue-emotion%2Fstyled.svg)](https://badge.fury.io/js/%40vue-emotion%2Fstyled)
+
 Use dynamic styling powered by [emotion](https://emotion.sh/docs/emotion) with Vue.js components.
 
 ## Demo Link
@@ -27,6 +30,24 @@ const StyledButton = styled(MyButton)`
 const StyledAnchor = styled.a`
   text-decoration: none;
 `
+```
+
+## Object styles
+```javascript
+const StyledButton = styled(MyButton)({
+    color: '#0000ff',
+    flex: 1
+})
+```
+
+## Reuse styles using withComponent
+```javascript
+const StyledButton = styled(MyButton)`
+    height: 100px;
+    width: 200px;
+`
+const StyledAnchor = StyledButton.withComponent('a');
+// => StyledButton and StyledAnchor have same styles
 ```
 
 # Bugs/Features
