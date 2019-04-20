@@ -25,34 +25,22 @@
         :color="colorInput"
         :backgroundColor="backgroundColorInput"
       />
-      <new-demo-box
-        :height="heightInput"
-        :width="widthInput"
-        :color="colorInput"
-        :backgroundColor="backgroundColorInput"
-      />
     </div>
   </div>
 </template>
 
 <script>
 import DemoBox from "./DemoBox.vue";
-import styled from '../../lib/styled';
-
-const base = styled(DemoBox)`
-  border: 1px solid #000;
-  padding: 10px;
-`
+import styled from '@vue-emotion/styled';
 
 const StyledDemoBox = styled(base)`
+  border: 1px solid #000;
+  padding: 10px;
   height: ${props => props.height}px;
   width: ${props => props.width}px;
   color: ${props => props.color};
   background-color: ${props => props.backgroundColor};
 `
-
-const NewDemoBox = StyledDemoBox.withComponent('a');
-console.log(NewDemoBox);
 
 export default {
   name: "App",
