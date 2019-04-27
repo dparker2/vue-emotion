@@ -24,7 +24,15 @@
         :width="widthInput"
         :color="colorInput"
         :backgroundColor="backgroundColorInput"
-      />
+        class="test"
+      >
+        <demo-box>
+          test
+        </demo-box>
+      </styled-demo-box>
+      <styled-anchor some="other" :color="colorInput" class="blue">
+        test
+      </styled-anchor>
     </div>
   </div>
 </template>
@@ -40,12 +48,24 @@ const StyledDemoBox = styled(DemoBox)`
   width: ${props => props.width}px;
   color: ${props => props.color};
   background-color: ${props => props.backgroundColor};
+
+  ${DemoBox} {
+    color: red;
+  }
+`
+
+console.log({ ...DemoBox })
+
+const StyledAnchor = styled.a`
+  color: ${props => props.color};
 `
 
 export default {
   name: "App",
   components: {
-    StyledDemoBox
+    StyledDemoBox,
+    DemoBox,
+    StyledAnchor
   },
   data() {
     return {
