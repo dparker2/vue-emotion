@@ -24,7 +24,11 @@
         :width="widthInput"
         :color="colorInput"
         :backgroundColor="backgroundColorInput"
-      />
+      >
+        <ul>
+          <li>Should be red</li>
+        </ul>
+      </styled-demo-box>
     </div>
   </div>
 </template>
@@ -40,6 +44,10 @@ const StyledDemoBox = styled(DemoBox)`
   width: ${props => props.width}px;
   color: ${props => props.color};
   background-color: ${props => props.backgroundColor};
+
+  & li {
+    color: red;
+  }
 `
 
 export default {
