@@ -1,6 +1,6 @@
 {
   "name": "@vue-emotion/styled",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Integration between vue.js and emotion",
   "main": "index.js",
   "repository": {
