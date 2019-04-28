@@ -1,7 +1,6 @@
 <template>
     <div>
         Base Test Component
-        <slot />
     </div>
 </template>
 
