@@ -34,6 +34,18 @@ const StyledAnchor = styled.a`
 `
 ```
 
+## Target styled components
+```javascript
+import StyledButton from './somewhere'
+
+const StyledWrapper = styled.section`
+  div > ${StyledButton} {
+    color: #123123;
+  }
+`
+```
+*Note: Doesn't work with object styles*
+
 ## Object styles
 ```javascript
 const StyledButton = styled(MyButton)({

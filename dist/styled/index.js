@@ -5,85 +5,107 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var htmlTags = _interopDefault(require('html-tags'));
 var emotion = require('emotion');
 
-const makeMixin = () => ({
-    mounted() {
-        const emotionClass = () => emotion.cx(
-            ...this.$options.$_interpolations.map(templateArgs =>
-                emotion.css.apply(
-                    { mergedProps: { ...this.$attrs, ...this.$props } },
-                    templateArgs
-                )
-            )
-        );
+/**
+ * Render function for the functional wrapper.
+ */
+function render(createElement, context) {
+    const emotionClass = emotion.cx(...this.$_styles.map(templateArg =>
+        emotion.css.apply({ mergedProps: context.props }, templateArg)
+    ));
 
-        const classChanged = (newClass, oldClass) => {
-            this.$el.classList.remove(oldClass);
-            this.$el.classList.add(newClass);
-        };
+    // Add the target class if need be
+    const classes = this.$_targetClass
+        ? [emotionClass, this.$_targetClass]
+        : [emotionClass];
 
-        this.$watch(
-            emotionClass,
-            classChanged,
-            { immediate: true }
-        );
-    }
-});
+    return createElement(
+        this.$_styledFrom,  // Base component even if styled multiple times
+        { ...context.data, class: classes },
+        context.children
+    );
+}
 
-const makeComponent = (tag) => ({
-    render: function (createElement) {
-        return createElement(
-            tag,
-            this.$attrs,
-            this.$slots.default
-        )
-    }
-});
-
-const withComponent = function(tagOrComp) {
-    const newStyled = styled.hasOwnProperty(tagOrComp)
-        ? styled[tagOrComp]()
-        : styled(tagOrComp)();
-    newStyled.$_interpolations = [
-        ...this.$_interpolations
-    ];
-    return newStyled;
-};
-
-const newStyled = (component) => (...templateArgs) => {
-    const styledMixin = makeMixin();
-    const mixins = component.mixins;
-    const withStyledMixin = {
-        ...component,
-        mixins: mixins
-            ? [...mixins, styledMixin]
-            : [styledMixin],
-        withComponent,
-        $_interpolations: [templateArgs]
+const makeWrapper = (allStyles, baseComponent) => {
+    const wrapper = {
+        functional: true,
+        $_styles: allStyles,
+        $_styledFrom: baseComponent,
+        withComponent: makeWithComponent(allStyles),
     };
-    return withStyledMixin;
+    // Bind the wrapper to render so it can always access $_styles
+    // and $_styledFrom even if they are changed by subsequent stylings
+    wrapper.render = render.bind(wrapper);
+    return wrapper;
 };
 
-const mergeStyled = (component) => (...templateArgs) => {
-    const $_interpolations = [
-        ...component.$_interpolations,
-        templateArgs
-    ];
-    const withMoreStyles = {
-        ...component,
-        $_interpolations
-    };
-    return withMoreStyles;
-};
+const makeWithComponent = (styles) => (tagOrComp) => makeWrapper(styles, tagOrComp);
 
-const styled = (component) => {
-    if (component.$_interpolations) {
-        return mergeStyled(component)
+/**
+ * Make a new functional wrapper, used on basic html tags or non-styled components
+ */
+const newWrapper = (wrapped, templateArgs) => makeWrapper([templateArgs], wrapped);
+
+/**
+ * Merge existing styles into a new functional wrapper, used on styled components
+ */
+const mergeWrapper = (wrapped, templateArgs) => makeWrapper(
+    [...wrapped.$_styles, templateArgs],
+    wrapped.$_styledFrom
+);
+
+/**
+ * If a component is a styled component
+ */
+const isStyled = component =>
+    component.$_styles !== undefined &&
+    component.$_styledFrom !== undefined;
+
+/**
+ * Add a unique class or use the existing one
+ */
+const putTarget = component => {
+    if (component.$_targetClass) {
+        return `.${component.$_targetClass}`
     } else {
-        return newStyled(component)
+        const targetClass = `_${Math.random().toString(36).slice(2)}`;
+        component.$_targetClass = targetClass;
+        return `.${targetClass}`;
     }
 };
 
-const styledHTML = (tag) => styled(makeComponent(tag));
+/**
+ * For any component passed as a style argument, add a unique class
+ * and change the argument to the selector for that class.
+ */
+const transformTargets = templateArgs =>
+    templateArgs.map(arg => {
+        if (arg.render) {
+            /* istanbul ignore else */
+            if (isStyled(arg)) {
+                return putTarget(arg);
+            } else {
+                if (process.env.NODE_ENV !== 'production') {
+                    // eslint-disable-next-line no-console
+                    console.error(`Only styled components are supported as selectors`);
+                }
+                return '';
+            }
+        }
+        return arg;
+    });
+
+/**
+ * Style the passed component.
+ * @param {String|VueComponent} tagOrComp 
+ */
+const styled = tagOrComp => (...args) => {
+    const templateArgs = transformTargets(args);
+    return isStyled(tagOrComp)
+    ? mergeWrapper(tagOrComp, templateArgs)
+    : newWrapper(tagOrComp, templateArgs);
+};
+
+const styledHTML = (tag) => styled(tag);
 htmlTags.forEach(tag => (styled[tag] = styledHTML(tag)));
 
 module.exports = styled;
