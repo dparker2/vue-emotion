@@ -37,7 +37,7 @@
 import DemoBox from "./DemoBox.vue";
 import styled from '../../lib/styled';
 
-const StyledDemoBox = styled(DemoBox)`
+const StyledDemoBox = styled(DemoBox, {scoped: true})`
   border: 1px solid #000;
   padding: 10px;
   height: ${props => props.height}px;
