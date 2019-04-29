@@ -37,7 +37,13 @@
 import DemoBox from "./DemoBox.vue";
 import styled from '../../lib/styled';
 
-const StyledDemoBox = styled(DemoBox, {scoped: true})`
+const Abc = styled(DemoBox)`
+  li {
+    color: blue;
+  }
+`
+
+const StyledDemoBox = styled(Abc, {scoped: true})`
   border: 1px solid #000;
   padding: 10px;
   height: ${props => props.height}px;
@@ -45,7 +51,7 @@ const StyledDemoBox = styled(DemoBox, {scoped: true})`
   color: ${props => props.color};
   background-color: ${props => props.backgroundColor};
 
-  & li {
+  li {
     color: red;
   }
 `
