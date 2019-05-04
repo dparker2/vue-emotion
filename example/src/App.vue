@@ -24,11 +24,7 @@
         :width="widthInput"
         :color="colorInput"
         :backgroundColor="backgroundColorInput"
-      >
-        <ul>
-          <li>Should be red</li>
-        </ul>
-      </styled-demo-box>
+      />
     </div>
   </div>
 </template>
@@ -37,23 +33,13 @@
 import DemoBox from "./DemoBox.vue";
 import styled from '../../lib/styled';
 
-const Abc = styled(DemoBox)`
-  li {
-    color: blue;
-  }
-`
-
-const StyledDemoBox = styled(Abc, {scoped: true})`
+const StyledDemoBox = styled(DemoBox)`
   border: 1px solid #000;
   padding: 10px;
   height: ${props => props.height}px;
   width: ${props => props.width}px;
   color: ${props => props.color};
   background-color: ${props => props.backgroundColor};
-
-  li {
-    color: red;
-  }
 `
 
 export default {

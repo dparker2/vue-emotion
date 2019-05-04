@@ -6,6 +6,5 @@
       <li>The changes are reactive via Vue.js</li>
       <li>Emotion powers the js to css transformation.</li>
     </ul>
-    <slot />
   </div>
 </template>
