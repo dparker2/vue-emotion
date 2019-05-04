@@ -1,0 +1,26 @@
+{
+    "name": "@vue-emotion/plugins",
+    "version": "0.0.1",
+    "description": "Vue.js plugins intended to be used with @vue-emotion packages",
+    "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/ParkerD559/vue-emotion.git"
+    },
+    "keywords": [
+      "vue",
+      "vuejs",
+      "vuejs2",
+      "emotion",
+      "emotionjs",
+      "emotion-js",
+      "css-in-js"
+    ],
+    "author": "David Parker",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/ParkerD559/vue-emotion/issues"
+    },
+    "homepage": "https://github.com/ParkerD559/vue-emotion#readme"
+  }
+  
