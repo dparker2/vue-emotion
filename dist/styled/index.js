@@ -13,6 +13,9 @@ function render(createElement, context) {
         emotion.css.apply({ mergedProps: context.props }, templateArg)
     ));
 
+    // add any preexisting classes
+    const existingClasses = normalizeClasses(context.data);
+    
     // Add the target class if need be
     const classes = this.$_targetClass
         ? [emotionClass, this.$_targetClass]
@@ -20,7 +23,7 @@ function render(createElement, context) {
 
     return createElement(
         this.$_styledFrom,  // Base component even if styled multiple times
-        { ...context.data, class: classes },
+        { ...context.data, class: classes.concat(existingClasses) },
         context.children
     );
 }
@@ -59,6 +62,27 @@ const mergeWrapper = (wrapped, templateArgs) => makeWrapper(
 const isStyled = component =>
     component.$_styles !== undefined &&
     component.$_styledFrom !== undefined;
+
+/**
+ * Normalize all possible class formats (string, object, array) to array format.
+ */
+const normalizeClasses = (vnodeData = {}) => {
+  if (!vnodeData.class) return [];
+  const classes = vnodeData.class;
+  if (Array.isArray(classes)) {
+    // join all classes into a single string, and then resplit to an array
+    // because it could be a hybrid format like: ['class1 class 2', 'class 2'])
+    return classes.join(' ').split(' ');
+  }
+  if (typeof classes === 'object') {
+    return Object.entries(classes) // convert to [[class, boolean]] format
+      .filter(([c, v]) => v) // filter to entries where object value is truthy
+      .map(([c]) => c); // map to "class"
+  }
+
+  // otherwise it's just a string, so split at spaces and return as an array
+  return classes.split(' ');
+};
 
 /**
  * Add a unique class or use the existing one
